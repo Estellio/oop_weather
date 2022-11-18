@@ -1,4 +1,7 @@
-const weather = new Weather('Rakvere')
+const ls = new LS()
+const initCity = ls.getCity()
+
+const weather = new Weather(initCity)
 
 const ui = new UI()
 
@@ -8,6 +11,7 @@ form.addEventListener('submit', changeWeather)
 function changeWeather(event) {
     const city = document.querySelector('#city-name').value
     weather.changeCity(city)
+    ls.setCity(city)
     getWeather()
     document.querySelector('#city-name').value = ''
     event.preventDefault()
